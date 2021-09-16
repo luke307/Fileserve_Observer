@@ -7,7 +7,7 @@ from services.server_types import ServerTypes
 class FTPserver(ServerTypes):
 
 
-    def upload(self,ip, user, password, path, protocol):
+    def upload(self,ip, user, password, path):
 
         for file in os.listdir(path):
 
