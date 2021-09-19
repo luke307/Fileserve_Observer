@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
+import os
 
 from services.config_service.contracts.configuration import Base, DB_Directory, DB_Destination
 
@@ -8,7 +9,10 @@ class ConfigRepository:
 
     def __init__(self):
 
-        _engine = create_engine('sqlite:///C:\\Users\\Lukas\\Desktop\\ftp\db\\ftpdb.db')
+        path = os.getcwd()
+        db = os.path.join(path, 'db\\ftpdb.db')
+
+        _engine = create_engine('sqlite:///' + db)
         Base.metadata.create_all(bind=_engine)
         self._session = Session(_engine)
 
