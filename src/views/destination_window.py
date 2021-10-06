@@ -31,6 +31,7 @@ class DestinationWindow(QWidget):
         self.comboBox = QComboBox(self)
         self.comboBox.addItem('ftp')
         self.comboBox.addItem('sftp')
+        self.comboBox.addItem('otc')
 
         layout = QVBoxLayout()
 
@@ -55,9 +56,10 @@ class DestinationWindow(QWidget):
 
         newDes = Destination(
                     self.ip_input.text(), 
+                    self.comboBox.currentText(),
                     self.username_input.text(), 
-                    self.password_input.text(), 
-                    self.comboBox.currentText())
+                    self.password_input.text()
+                    )
 
         desAdd = ConfigService()
         desAdd.save(newDes)

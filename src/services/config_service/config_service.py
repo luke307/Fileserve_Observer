@@ -62,7 +62,7 @@ class ConfigService:
             to_save = DB_Directory(config.dirpath, config.destination)
 
         elif 'Destination' in str(type(config)):
-            to_save = DB_Destination(config.ip, config.protocol, config.username)
+            to_save = DB_Destination(config.ip, config.username, config.protocol)
 
             keyring.set_password(config.ip, config.username, config.password)
 

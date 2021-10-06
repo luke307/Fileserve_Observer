@@ -4,7 +4,7 @@ import os
 from services.server_types import ServerTypes
 
 
-class FTPserver(ServerTypes):
+class SFTPserver(ServerTypes):
 
 
     def upload(self,ip, user, password, path):

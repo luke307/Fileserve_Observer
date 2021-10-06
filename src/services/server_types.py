@@ -1,9 +1,9 @@
 
-class ServerType:
+class ServerTypes:
 
-    def __init__(self, path):
+    def __init__(self):
         pass
 
 
-    def upload(self):
+    def upload(self,ip,user,password,path):
         pass

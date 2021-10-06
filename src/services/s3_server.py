@@ -4,14 +4,15 @@ import os
 from services.server_types import ServerTypes
 
 
-class FTPserver(ServerTypes):
+class S3server(ServerTypes):
 
 
-    def upload(self,access_key, secret_access_key,bucket, path):
+    def upload(self,bucket, access_key, secret_access_key, path):
 
         client = boto3.client('s3',
                             aws_access_key_id= access_key,
-                            aws_secret_access_key = secret_access_key)
+                            aws_secret_access_key = secret_access_key,
+                            endpoint_url='https://obs.eu-de.otc.t-systems.com')
 
         for file in os.listdir(path):
 
@@ -21,8 +22,8 @@ class FTPserver(ServerTypes):
 
                 try:
                     upload_file_bucket = bucket
-                    upload_file_key = filepath
-                    client.upload_file(file, upload_file_bucket, upload_file_key)
+                    upload_file_key = 'LG_SDK_TEST/' + file
+                    client.upload_file(filepath, upload_file_bucket, upload_file_key)
                 except(AssertionError):
                     pass
                 else:

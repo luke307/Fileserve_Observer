@@ -10,8 +10,7 @@ class ConfigRepository:
     def __init__(self):
 
         path = os.getcwd()
-        db = os.path.join(path, 'db\\ftpdb.db')
-
+        db = os.path.join(path, 'db/ftpdb.db')
         _engine = create_engine('sqlite:///' + db)
         Base.metadata.create_all(bind=_engine)
         self._session = Session(_engine)
@@ -53,4 +52,3 @@ class ConfigRepository:
                 destinations = session.query(DB_Destination).all()
 
         return destinations
-    
