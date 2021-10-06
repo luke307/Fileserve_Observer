@@ -1,10 +1,10 @@
-ERROR:root:Exception in main()
+2021-10-06 14:47:27,427:__main__:Failed to open the main Window
 Traceback (most recent call last):
-  File "c:/Users/DE1119189/Desktop/Github/Fileserve_Observer/test3.py", line 14, in <module>
-    exit(main())
-NameError: name 'main' is not defined
-ERROR:root:Exception in main()
+  File "c:/Users/DE1119189/Desktop/Github/Fileserve_Observer/src/main.py", line 26, in <module>
+    mtain()
+NameError: name 'mtain' is not defined
+2021-10-06 14:50:15,421:root:Failed to open the main Window
 Traceback (most recent call last):
-  File "c:/Users/DE1119189/Desktop/Github/Fileserve_Observer/test3.py", line 14, in <module>
-    exit(main())
-NameError: name 'main' is not defined
+  File "c:/Users/DE1119189/Desktop/Github/Fileserve_Observer/src/main.py", line 30, in <module>
+    mtain()
+NameError: name 'mtain' is not defined

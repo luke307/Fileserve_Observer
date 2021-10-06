@@ -6,6 +6,9 @@ from services.process_service import ProcessService
 from views.directory_window import DirectoryWindow
 from services.config_service.config_service import ConfigService
 
+import logging
+
+
 
 class MainWindow(QWidget):
 
