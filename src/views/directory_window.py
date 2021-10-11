@@ -8,6 +8,22 @@ from services.config_service.config_service import ConfigService
 from contracts.configuration import Directory, Destination
 
 
+##### Create Logger #####
+import logging
+import os
+
+path = os.getcwd()
+logpath = os.path.join(path, 'ftp.log')
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.ERROR)
+formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+file_handler = logging.FileHandler(logpath)
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+###########################
+
+
 class DirectoryWindow(QWidget):
 
     def __init__(self, destination, directory = None):
@@ -77,6 +93,9 @@ class DirectoryWindow(QWidget):
 
         newDir = Directory(self.path_to_directory_input.text(), self.comboBox.currentText())
 
+        logger.debug(f'SAVE: path to directory:{newDir.dirpath}')
+        logger.debug(f'SAVE: destination:{newDir.destination}')
+    
         dirAdd = ConfigService()
         dirAdd.save(newDir)
 
@@ -85,6 +104,9 @@ class DirectoryWindow(QWidget):
     def _on_delete_clicked(self):
 
         oldDir = Directory(self.path_to_directory_input.text(), self.comboBox.currentText())
+
+        logger.debug(f'DELETE: path to directory:{oldDir.dirpath}')
+        logger.debug(f'DELETE: destination:{oldDir.destination}')
 
         dirRemove = ConfigService()
         dirRemove.delete(oldDir)

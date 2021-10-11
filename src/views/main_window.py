@@ -6,14 +6,32 @@ from services.process_service import ProcessService
 from views.directory_window import DirectoryWindow
 from services.config_service.config_service import ConfigService
 
-import logging
 
+##### Create Logger #####
+import logging
+import os
+
+path = os.getcwd()
+logpath = os.path.join(path, 'ftp.log')
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.ERROR)
+formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+file_handler = logging.FileHandler(logpath)
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+###########################
 
 
 class MainWindow(QWidget):
 
     def __init__(self):
         super().__init__()
+
+        try:
+            baum()
+        except:
+            logger.exception('hat geklappt')
 
         self.config_service = ConfigService()
         self.config = None
