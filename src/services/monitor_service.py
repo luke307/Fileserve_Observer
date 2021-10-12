@@ -5,10 +5,7 @@ import ntpath
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 from services.config_service.config_service import ConfigService
-from services.server_types import ServerTypes
-from services.ftp_server import FTPserver
-from services.sftp_server import SFTPserver
-from services.s3_server import S3server
+from services.upload_functions import Upload
 
 
 class Event(LoggingEventHandler):
@@ -21,16 +18,14 @@ class Event(LoggingEventHandler):
         directory = config_service.loadQuery(path)
         destination = config_service.loadQuery(directory.destination)
 
-        uploadDir: ServerTypes
-        print(destination.protocol,destination.protocol == 'otc',path)
         if destination.protocol == 'ftp':
-            uploadDir = FTPserver()
-        elif destination.protocol == 'sftp':
-            uploadDir = SFTPserver()
-        elif destination.protocol == 'otc':
-            uploadDir = S3server()
+            Upload.to_ftp(destination.ip,destination.username,destination.password, path)
 
-        uploadDir.upload(destination.ip,destination.username,destination.password, path)
+        elif destination.protocol == 'sftp':
+            Upload.to_sftp(destination.ip,destination.username,destination.password, path)
+
+        elif destination.protocol == 'otc':
+            Upload.to_otc(destination.ip,destination.username,destination.password, path)
 
 
 class MonitorService:
