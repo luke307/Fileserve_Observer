@@ -1,14 +1,28 @@
 import ftplib
 import pysftp
 import boto3
+
+
+##### Create Logger #####
+import logging
 import os
 
+path = os.getcwd()
+logpath = os.path.join(path, 'ftp.log')
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+file_handler = logging.FileHandler(logpath)
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+###########################
 
 
 class Upload:
 
 
-    def to_ftp(self,ip, user, password, path):
+    def to_ftp(ip, user, password, path):
 
         for file in os.listdir(path):
 
@@ -20,13 +34,14 @@ class Upload:
                     ftp = ftplib.FTP(ip)
                     ftp.login(user, password)
                     ftp.storbinary(f'STOR {file}', open(filepath,'rb'))
-                except(AssertionError):
-                    pass
+                except:
+                    logger.exception("Could not upload to FTP-Server")
                 else:
                     os.remove(filepath)
+                    logger.info(f"Uploaded {filepath} to {ip}")
 
 
-    def to_sftp(self,ip, user, password, path):
+    def to_sftp(ip, user, password, path):
 
         for file in os.listdir(path):
 
@@ -36,15 +51,17 @@ class Upload:
 
                 try:
                     with pysftp.Connection(ip, username=user, password=password) as sftp:
-                        sftp.put(filepath)
+                        with sftp.cd('trainee'):
+                            sftp.put(filepath)
 
-                except(AssertionError):
-                    pass
+                except:
+                    logger.exception("Could not upload to SFTP-Server")
                 else:
                     os.remove(filepath)
+                    logger.info(f"Uploaded {filepath} to {ip}")
 
 
-    def to_otc(self,bucket, access_key, secret_access_key, path):
+    def to_otc(bucket, access_key, secret_access_key, path):
 
         client = boto3.client('s3',
                             aws_access_key_id= access_key,
@@ -61,7 +78,8 @@ class Upload:
                     upload_file_bucket = bucket
                     upload_file_key = 'LG_SDK_TEST/' + file
                     client.upload_file(filepath, upload_file_bucket, upload_file_key)
-                except(AssertionError):
-                    pass
+                except:
+                    logger.exception("Could not upload to OTC")
                 else:
                     os.remove(filepath)
+                    logger.info(f"Uploaded {filepath} to {bucket}")

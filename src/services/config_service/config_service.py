@@ -3,7 +3,8 @@ from services.config_service.repository.config_repository import ConfigRepositor
 from contracts.configuration import Directory, Destination
 
 import keyring
-
+import subprocess
+import os
 
 class ConfigService:
 
@@ -66,7 +67,15 @@ class ConfigService:
 
             keyring.set_password(config.ip, config.username, config.password)
 
-        
+            if config.protocol == 'sftp':
+                cmd = 'powershell.exe ssh-keyscan.exe -p 22 172.16.0.60'
+                p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                for line in p.stdout:
+                    if b'ssh-rsa' in line:
+                        home = os.environ['HOME']
+                        with open(home + r"\known_hosts","a") as f:
+                            f.write('sftpserver,' + line.decode("utf-8"))
+
         self.config_repository.save_row(to_save)
 
 

@@ -30,3 +30,173 @@ Traceback (most recent call last):
   File "c:/Users/Lukas/Desktop/github/Fileserve_Observer/src/main.py", line 12, in main
     sys.exit(app.exec_())
 SystemExit: 0
+2021-10-12 12:19:39,369:views.main_window:hat geklappt
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\views\main_window.py", line 32, in __init__
+    baum()
+NameError: name 'baum' is not defined
+2021-10-12 12:19:59,761:__main__:Failed to open the main Window
+Traceback (most recent call last):
+  File "c:/Users/DE1119189/Desktop/Github/Fileserve_Observer/src/main.py", line 31, in <module>
+    main()
+  File "c:/Users/DE1119189/Desktop/Github/Fileserve_Observer/src/main.py", line 12, in main
+    sys.exit(app.exec_())
+SystemExit: 0
+2021-10-12 13:46:52,525:views.main_window:hat geklappt
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\views\main_window.py", line 32, in __init__
+    baum()
+NameError: name 'baum' is not defined
+2021-10-12 13:58:53,441:views.main_window:hat geklappt
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\views\main_window.py", line 32, in __init__
+    baum()
+NameError: name 'baum' is not defined
+2021-10-12 14:34:24,372:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 53, in to_sftp
+    with pysftp.Connection(ip, username=user, password=password) as sftp:
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-12 14:37:34,160:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 61, in to_sftp
+    with My_Connection(ip, username=user, password=password) as sftp:
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 25, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-12 14:42:30,659:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 61, in to_sftp
+    with My_Connection(ip, username=user, password=password) as sftp:
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 25, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-12 14:43:48,665:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 65, in to_sftp
+    with My_Connection(ip, username=user, password=password) as sftp:
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 25, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-12 14:46:42,371:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 75, in to_sftp
+    with My_Connection(ip, username=user, password=password) as sftp:
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 35, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-12 14:48:55,002:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 75, in to_sftp
+    with My_Connection(ip, username=user, password=password) as sftp:
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 35, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-12 14:50:59,948:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 75, in to_sftp
+    with My_Connection(ip, username=user, password=password) as sftp:
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 35, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-12 15:07:05,137:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 77, in to_sftp
+    with My_Connection(ip, username=user, password=password) as sftp:
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 35, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-12 15:13:45,518:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 77, in to_sftp
+    with My_Connection(ip, username=user, password=password, private_key=r"C:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\public_key\privake_key.ppk", private_key_pass="manager", port=22, cnopts=cnopts) as sftp:
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 35, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-12 15:20:31,190:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 77, in to_sftp
+    with My_Connection(ip, username=user, password=password) as sftp:
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 35, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-12 15:21:57,708:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 77, in to_sftp
+    with My_Connection(ip, username=user, password=password) as sftp:
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 35, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-13 09:49:16,922:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 81, in to_sftp
+    with pysftp.Connection(ip, username=user, password=password) as sftp:
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-13 09:51:25,336:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 81, in to_sftp
+    with pysftp.Connection(ip, username=user, password=password) as sftp:
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 132, in __init__
+    self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+  File "C:\Users\DE1119189\AppData\Local\Programs\Python\Python36\lib\site-packages\pysftp\__init__.py", line 71, in get_hostkey
+    raise SSHException("No hostkey for host %s found." % host)
+paramiko.ssh_exception.SSHException: No hostkey for host 172.16.0.60 found.
+2021-10-13 10:00:43,624:views.main_window:hat geklappt
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\views\main_window.py", line 32, in __init__
+    baum()
+NameError: name 'baum' is not defined
+2021-10-13 13:32:28,259:services.upload_functions:Could not upload to SFTP-Server
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\services\upload_functions.py", line 56, in to_sftp
+    with sftp.chdir('trainee'):
+AttributeError: __enter__
+2021-10-13 13:33:08,916:services.upload_functions:Uploaded C:\Users\DE1119189\Desktop\Github\Fileserve_Observer\test/testlg.txt to 172.16.0.60

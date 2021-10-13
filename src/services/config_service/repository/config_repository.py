@@ -12,7 +12,7 @@ path = os.getcwd()
 logpath = os.path.join(path, 'ftp.log')
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.ERROR)
+logger.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
 file_handler = logging.FileHandler(logpath)
 file_handler.setFormatter(formatter)
@@ -40,7 +40,7 @@ class ConfigRepository:
                 session.commit()
 
             for key in (key for key in vars(dataset) if not key.startswith('_')):
-                logger.debug(key,': ',vars(dataset)[key])
+                logger.debug(key,': ', vars(dataset)[key])
 
 
             logger.info('Saved data to Database')
