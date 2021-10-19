@@ -26,7 +26,7 @@ logger.addHandler(file_handler)
 
 class DirectoryWindow(QWidget):
 
-    def __init__(self, destination, directory = None):
+    def __init__(self, destination: list, directory: Directory = None):
 
         super().__init__()
 
@@ -75,7 +75,7 @@ class DirectoryWindow(QWidget):
 
 
     @pyqtSlot()
-    def _on_browse_clicked(self):
+    def _on_browse_clicked(self) -> None:
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         folder  = QFileDialog.getExistingDirectory(self, 'Select a directory')
@@ -84,12 +84,12 @@ class DirectoryWindow(QWidget):
 
 
     @pyqtSlot()
-    def _on_new_clicked(self):
+    def _on_new_clicked(self) -> None:
         self._new_menu.show()
 
 
     @pyqtSlot()
-    def _on_save_clicked(self):
+    def _on_save_clicked(self) -> None:
 
         newDir = Directory(self.path_to_directory_input.text(), self.comboBox.currentText())
 
@@ -101,7 +101,7 @@ class DirectoryWindow(QWidget):
 
 
     @pyqtSlot()
-    def _on_delete_clicked(self):
+    def _on_delete_clicked(self) -> None:
 
         oldDir = Directory(self.path_to_directory_input.text(), self.comboBox.currentText())
 

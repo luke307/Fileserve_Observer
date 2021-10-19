@@ -28,11 +28,6 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
 
-        try:
-            baum()
-        except:
-            logger.exception('hat geklappt')
-
         self.config_service = ConfigService()
         self.config = None
         self.load_config()
@@ -78,11 +73,11 @@ class MainWindow(QWidget):
         self.show()
 
 
-    def load_config(self):
+    def load_config(self) -> None:
         self.config = self.config_service.loadAll()
 
 
-    def create_table(self):
+    def create_table(self) -> QTableWidget:
         self.load_config()
         table = QTableWidget()
         table.setRowCount(len(self.config['directories']))
@@ -101,30 +96,30 @@ class MainWindow(QWidget):
         return table
 
     @pyqtSlot()
-    def _on_new_clicked(self):
+    def _on_new_clicked(self) -> None:
         self._new_menu.show()
 
 
     @pyqtSlot()
-    def _on_refresh_clicked(self):
+    def _on_refresh_clicked(self) -> None:
         self.table.setParent(None)
         self.table = self.create_table()
         self.layout.addWidget(self.table)
 
 
     @pyqtSlot()
-    def _on_activate_clicked(self):
+    def _on_activate_clicked(self) -> None:
         process_service = ProcessService()
         process_service.start()
 
 
     @pyqtSlot()
-    def _on_kill_clicked(self):
+    def _on_kill_clicked(self) -> None:
         process_service = ProcessService()
         process_service.kill()
 
     @pyqtSlot()
-    def _create_context_menu(self):
+    def _create_context_menu(self) -> None:
         position = QCursor.pos()
         context_menu = QMenu(self)
         action_edit = context_menu.addAction('Edit')

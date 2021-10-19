@@ -52,7 +52,7 @@ class DestinationWindow(QWidget):
 
 
     @pyqtSlot()
-    def _on_save_clicked(self):
+    def _on_save_clicked(self) -> None:
 
         newDes = Destination(
                     self.ip_input.text(), 
@@ -65,7 +65,7 @@ class DestinationWindow(QWidget):
         desAdd.save(newDes)
 
     @pyqtSlot()
-    def _on_delete_clicked(self):
+    def _on_delete_clicked(self) -> None:
 
         oldDes = Destination(
                     self.ip_input.text(), 

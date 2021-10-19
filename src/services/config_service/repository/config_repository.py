@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
-from services.config_service.contracts.configuration import Base, DB_Directory, DB_Destination
+from services.config_service.contracts.configuration import Base, DB_Dataset, DB_Directory, DB_Destination
 
 
 ##### Create Logger #####
@@ -33,7 +33,7 @@ class ConfigRepository:
             logger.exception('Can not connect to Database')
 
 
-    def save_row(self, dataset):
+    def save_row(self, dataset: DB_Dataset) -> bool:
         try:
             with self._session as session:
                 session.add(dataset)
@@ -46,9 +46,12 @@ class ConfigRepository:
             logger.info('Saved data to Database')
         except:
             logger.exception('Could not save data to Database')
+            return False
+
+        return True
 
 
-    def delete(self, dataset):
+    def delete(self, dataset: DB_Dataset) -> bool:
         try:
             with self._session as session:
                 session.delete(dataset)
@@ -60,13 +63,16 @@ class ConfigRepository:
             logger.info('Deleted data from Database')
         except:
             logger.exception('Could not delete data from Database')
+            return False
+
+        return True
 
 
-    def update_row(self, to_update):
+    def update_row(self, to_update: DB_Dataset) -> bool:
         pass
 
 
-    def get_directories(self, path_for_query = None):
+    def get_directories(self, path_for_query: str = None) -> DB_Directory:
         directories = None
         try:
             with self._session as session:
@@ -81,7 +87,7 @@ class ConfigRepository:
         return directories
 
 
-    def get_destinations(self, ip_for_query = None):
+    def get_destinations(self, ip_for_query: str = None) -> DB_Destination:
         destinations = None
         try:
             with self._session as session:

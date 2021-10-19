@@ -200,3 +200,13 @@ Traceback (most recent call last):
     with sftp.chdir('trainee'):
 AttributeError: __enter__
 2021-10-13 13:33:08,916:services.upload_functions:Uploaded C:\Users\DE1119189\Desktop\Github\Fileserve_Observer\test/testlg.txt to 172.16.0.60
+2021-10-19 09:07:12,805:views.main_window:hat geklappt
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\views\main_window.py", line 32, in __init__
+    baum()
+NameError: name 'baum' is not defined
+2021-10-19 09:10:24,459:views.main_window:hat geklappt
+Traceback (most recent call last):
+  File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\views\main_window.py", line 32, in __init__
+    baum()
+NameError: name 'baum' is not defined

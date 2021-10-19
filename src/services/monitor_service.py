@@ -10,7 +10,7 @@ from services.upload_functions import Upload
 
 class Event(LoggingEventHandler):
 
-    def on_created(self, event):
+    def on_created(self, event) -> None:
 
         filepath = event.src_path
         path = ntpath.dirname(filepath)
@@ -30,7 +30,7 @@ class Event(LoggingEventHandler):
 
 class MonitorService:
 
-    def monitor(self):
+    def monitor(self) -> None:
 
         event_handler = Event()
         observer = Observer()

@@ -21,8 +21,7 @@ logger.addHandler(file_handler)
 
 class Upload:
 
-
-    def to_ftp(ip, user, password, path):
+    def to_ftp(ip: str, user: str, password: str, path: str) -> None:
 
         for file in os.listdir(path):
 
@@ -41,7 +40,7 @@ class Upload:
                     logger.info(f"Uploaded {filepath} to {ip}")
 
 
-    def to_sftp(ip, user, password, path):
+    def to_sftp(ip: str, user: str, password: str, path: str) -> None:
 
         for file in os.listdir(path):
 
@@ -61,7 +60,7 @@ class Upload:
                     logger.info(f"Uploaded {filepath} to {ip}")
 
 
-    def to_otc(bucket, access_key, secret_access_key, path):
+    def to_otc(bucket: str, access_key: str, secret_access_key: str, path: str) -> None:
 
         client = boto3.client('s3',
                             aws_access_key_id= access_key,
