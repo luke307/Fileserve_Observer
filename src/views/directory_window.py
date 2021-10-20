@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QVBoxLayout, QPushButton, QTableWidget, QComboBox, QFileDialog
+from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QVBoxLayout, QPushButton, QTableWidget, QComboBox, QFileDialog, QMessageBox
 from PyQt5.QtCore import pyqtSlot, Qt
 
 import ntpath
@@ -29,6 +29,10 @@ class DirectoryWindow(QWidget):
     def __init__(self, destination: list, directory: Directory = None):
 
         super().__init__()
+
+        self.config_service = ConfigService()
+        self.destination = destination
+
 
         self._new_menu = DestinationWindow(False)
         self._edit_menu = DestinationWindow(True)
@@ -72,7 +76,14 @@ class DirectoryWindow(QWidget):
 
         self.setLayout(layout)
 
-
+    def create_combobox(self):
+        try:
+            self.comboBox.clear()
+        except AttributeError:
+            pass
+        self.comboBox = QComboBox(self)
+        for i in range(len(self.destination)):
+            self.comboBox.addItem(self.destination[i].ip)
 
     @pyqtSlot()
     def _on_browse_clicked(self) -> None:
@@ -85,6 +96,7 @@ class DirectoryWindow(QWidget):
 
     @pyqtSlot()
     def _on_new_clicked(self) -> None:
+        self.close()
         self._new_menu.show()
 
 
@@ -95,9 +107,16 @@ class DirectoryWindow(QWidget):
 
         logger.debug(f'SAVE: path to directory:{newDir.dirpath}')
         logger.debug(f'SAVE: destination:{newDir.destination}')
-    
-        dirAdd = ConfigService()
-        dirAdd.save(newDir)
+
+        is_saved = self.config_service.save(newDir)
+        if is_saved:
+            output = 'Succesfully saved'
+        else:
+            output = 'Failed to save'
+
+        QMessageBox.information(self, 'Information', output, QMessageBox.Ok)
+        if is_saved:
+            self.close()
 
 
     @pyqtSlot()
@@ -108,5 +127,12 @@ class DirectoryWindow(QWidget):
         logger.debug(f'DELETE: path to directory:{oldDir.dirpath}')
         logger.debug(f'DELETE: destination:{oldDir.destination}')
 
-        dirRemove = ConfigService()
-        dirRemove.delete(oldDir)
+        is_deleted = self.config_service.delete(oldDir)
+        if is_deleted:
+            output = 'Succesfully deleted'
+        else:
+            output = 'Failed to delete'
+
+        QMessageBox.information(self, 'Information', output, QMessageBox.Ok)
+        if is_deleted:
+            self.close()

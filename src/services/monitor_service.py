@@ -3,14 +3,14 @@ import time
 import logging
 import ntpath
 from watchdog.observers import Observer
-from watchdog.events import LoggingEventHandler
+from watchdog.events import FileSystemEventHandler,FileSystemEvent
 from services.config_service.config_service import ConfigService
 from services.upload_functions import Upload
 
 
-class Event(LoggingEventHandler):
+class Event(FileSystemEventHandler):
 
-    def on_created(self, event) -> None:
+    def on_created(self, event: FileSystemEvent) -> None:
 
         filepath = event.src_path
         path = ntpath.dirname(filepath)

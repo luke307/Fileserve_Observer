@@ -210,3 +210,4 @@ Traceback (most recent call last):
   File "c:\Users\DE1119189\Desktop\Github\Fileserve_Observer\src\views\main_window.py", line 32, in __init__
     baum()
 NameError: name 'baum' is not defined
+2021-10-19 12:36:16,714:services.upload_functions:Uploaded C:/Users/DE1119189/Desktop/Github/Fileserve_Observer/test/hallo.txt to demo1.test.targos

@@ -7,6 +7,7 @@ from views.directory_window import DirectoryWindow
 from services.config_service.config_service import ConfigService
 
 
+
 ##### Create Logger #####
 import logging
 import os
@@ -76,6 +77,15 @@ class MainWindow(QWidget):
     def load_config(self) -> None:
         self.config = self.config_service.loadAll()
 
+    def create_combobox(self):
+        try:
+            self.comboBox.clear()
+        except AttributeError:
+            pass
+        self.comboBox = QComboBox(self)
+        for i in range(len(self.config['directories'])):
+            self.comboBox.addItem(self.config['directories'][i].dirpath)
+
 
     def create_table(self) -> QTableWidget:
         self.load_config()
@@ -97,6 +107,8 @@ class MainWindow(QWidget):
 
     @pyqtSlot()
     def _on_new_clicked(self) -> None:
+        self.load_config()
+        self._new_menu = DirectoryWindow(self.config['destinations'])
         self._new_menu.show()
 
 

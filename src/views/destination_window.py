@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QVBoxLayout, QPushButton, QTableWidget, QComboBox
+from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QVBoxLayout, QPushButton, QTableWidget, QComboBox, QMessageBox
 from PyQt5.QtCore import pyqtSlot
 
 from services.config_service.config_service import ConfigService
@@ -9,6 +9,8 @@ class DestinationWindow(QWidget):
     def __init__(self, edit):
 
         super().__init__()
+
+        self.config_service = ConfigService()
 
         ip_label = QLabel('IP')
         self.ip_input = QLineEdit()
@@ -61,8 +63,17 @@ class DestinationWindow(QWidget):
                     self.password_input.text()
                     )
 
-        desAdd = ConfigService()
-        desAdd.save(newDes)
+        is_saved = self.config_service.save(newDes)
+        if is_saved:
+            output = 'Succesfully saved'
+        else:
+            output = 'Failed to save'
+
+        message = QMessageBox.information(self, 'Information', output, QMessageBox.Ok)
+
+        if is_saved:
+            self.close()
+
 
     @pyqtSlot()
     def _on_delete_clicked(self) -> None:
@@ -73,5 +84,13 @@ class DestinationWindow(QWidget):
                     self.password_input.text(), 
                     self.comboBox.currentText())
 
-        oldDes = ConfigService()
-        oldDes.save(oldDes)
+        is_deleted = self.config_service.save(oldDes)
+        if is_deleted:
+            output = 'Succesfully deleted'
+        else:
+            output = 'Failed to delete'
+
+        message = QMessageBox.information(self, 'Information', output, QMessageBox.Ok)
+
+        if is_deleted:
+            self.close()
