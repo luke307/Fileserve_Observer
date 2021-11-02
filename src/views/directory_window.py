@@ -51,12 +51,16 @@ class DirectoryWindow(QWidget):
         save_button.clicked.connect(self._on_save_clicked)
 
 
-        self.comboBox = QComboBox(self)
+        self.comboBox1 = QComboBox(self)
         for i in range(len(destination)):
-            self.comboBox.addItem(destination[i].ip)
+            self.comboBox1.addItem(destination[i].ip)
 
-        self.comboBox.setEditable(True)
-        line_edit = self.comboBox.lineEdit()
+        #box_label = QLabel('Directory:')
+        self.comboBox2 = QComboBox(self)
+        self.comboBox2.addItem('None')
+
+        self.comboBox1.setEditable(True)
+        line_edit = self.comboBox1.lineEdit()
         line_edit.setAlignment(Qt.AlignCenter)
 
         layout = QVBoxLayout()
@@ -64,9 +68,11 @@ class DirectoryWindow(QWidget):
         layout.addWidget(path_to_directory_label)
         layout.addWidget(self.path_to_directory_input)
         layout.addWidget(browse_button)
-        layout.addWidget(self.comboBox)
-        layout.addWidget(new_button)    
+        layout.addWidget(self.comboBox1)
+        layout.addWidget(self.comboBox2)
+        layout.addWidget(new_button)
         layout.addWidget(save_button)
+
 
         if directory:
             delete_button = QPushButton('Delete')

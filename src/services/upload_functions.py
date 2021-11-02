@@ -1,5 +1,5 @@
-import ftplib
-import pysftp
+from ftplib import FTP
+from pysftp import Connection
 import boto3
 
 
@@ -30,9 +30,9 @@ class Upload:
                 filepath = path + '/' + file
 
                 try:
-                    ftp = ftplib.FTP(ip)
-                    ftp.login(user, password)
-                    ftp.storbinary(f'STOR {file}', open(filepath,'rb'))
+                    with FTP(ip) as ftp:
+                        ftp.login(user, password)
+                        ftp.storbinary(f'STOR {file}', open(filepath,'rb'))
                 except:
                     logger.exception("Could not upload to FTP-Server")
                 else:
@@ -49,7 +49,7 @@ class Upload:
                 filepath = path + '/' + file
 
                 try:
-                    with pysftp.Connection(ip, username=user, password=password) as sftp:
+                    with Connection(ip, username=user, password=password) as sftp:
                         with sftp.cd('trainee'):
                             sftp.put(filepath)
 
