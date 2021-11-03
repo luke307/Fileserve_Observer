@@ -1,0 +1,546 @@
+2021-10-21 21:04:01,943:services.config_service.repository.config_repository:Can not connect to Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3212, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 307, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 767, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 425, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 253, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 368, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 611, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 605, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 30, in __init__
+    Base.metadata.create_all(bind=_engine)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\sql\schema.py", line 4741, in create_all
+    ddl.SchemaGenerator, self, checkfirst=checkfirst, tables=tables
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3078, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 2994, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3166, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3245, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3216, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 2070, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3212, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 307, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 767, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 425, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 253, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 368, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 611, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 605, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2021-10-21 21:04:02,060:services.config_service.repository.config_repository:Could not get Directories from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 78, in get_directories
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-10-21 21:04:02,065:services.config_service.repository.config_repository:Could not get Destinations from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 93, in get_destinations
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-10-21 21:05:53,079:services.config_service.repository.config_repository:Can not connect to Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3212, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 307, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 767, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 425, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 253, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 368, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 611, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 605, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 30, in __init__
+    Base.metadata.create_all(bind=_engine)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\sql\schema.py", line 4741, in create_all
+    ddl.SchemaGenerator, self, checkfirst=checkfirst, tables=tables
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3078, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 2994, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3166, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3245, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3216, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 2070, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3212, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 307, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 767, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 425, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 253, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 368, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 611, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 605, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2021-10-21 21:05:53,085:services.config_service.repository.config_repository:Could not get Directories from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 78, in get_directories
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-10-21 21:05:53,086:services.config_service.repository.config_repository:Could not get Destinations from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 93, in get_destinations
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-10-21 21:08:30,637:services.config_service.repository.config_repository:Can not connect to Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3212, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 307, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 767, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 425, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 253, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 368, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 611, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 605, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 30, in __init__
+    Base.metadata.create_all(bind=_engine)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\sql\schema.py", line 4741, in create_all
+    ddl.SchemaGenerator, self, checkfirst=checkfirst, tables=tables
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3078, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 2994, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3166, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3245, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3216, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 2070, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3212, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 307, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 767, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 425, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 253, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 368, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 611, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 605, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2021-10-21 21:08:30,660:services.config_service.repository.config_repository:Could not get Directories from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 78, in get_directories
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-10-21 21:08:30,663:services.config_service.repository.config_repository:Could not get Destinations from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 93, in get_destinations
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-10-21 21:13:00,805:services.config_service.repository.config_repository:Can not connect to Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3212, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 307, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 767, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 425, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 253, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 368, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 611, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 605, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 31, in __init__
+    Base.metadata.create_all(bind=_engine)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\sql\schema.py", line 4741, in create_all
+    ddl.SchemaGenerator, self, checkfirst=checkfirst, tables=tables
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3078, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 2994, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3166, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3245, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3216, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 2070, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\base.py", line 3212, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 307, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 767, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 425, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 253, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 368, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 611, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\pool\base.py", line 605, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\ftp\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2021-10-21 21:13:00,835:services.config_service.repository.config_repository:Could not get Directories from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 79, in get_directories
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-10-21 21:13:00,840:services.config_service.repository.config_repository:Could not get Destinations from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 94, in get_destinations
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-11-04 00:04:03,470:services.config_service.repository.config_repository:Can not connect to Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3240, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 371, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 665, in __connect
+    with util.safe_reraise():
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 31, in __init__
+    Base.metadata.create_all(bind=_engine)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\sql\schema.py", line 4779, in create_all
+    bind._run_ddl_visitor(
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3106, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3022, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3194, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3273, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3243, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 2097, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3240, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 371, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 665, in __connect
+    with util.safe_reraise():
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2021-11-04 00:04:03,482:services.config_service.repository.config_repository:Could not get Directories from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 79, in get_directories
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-11-04 00:04:03,483:services.config_service.repository.config_repository:Could not get Destinations from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 94, in get_destinations
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-11-04 00:19:50,430:services.config_service.repository.config_repository:Can not connect to Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3240, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 371, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 665, in __connect
+    with util.safe_reraise():
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 33, in __init__
+    Base.metadata.create_all(bind=_engine)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\sql\schema.py", line 4779, in create_all
+    bind._run_ddl_visitor(
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3106, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3022, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3194, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3273, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3243, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 2097, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\base.py", line 3240, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 371, in __init__
+    self.__connect()
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 665, in __connect
+    with util.safe_reraise():
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\pool\base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\env\lib\site-packages\sqlalchemy\engine\default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2021-11-04 00:19:50,437:services.config_service.repository.config_repository:Could not get Directories from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 81, in get_directories
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'
+2021-11-04 00:19:50,438:services.config_service.repository.config_repository:Could not get Destinations from Database
+Traceback (most recent call last):
+  File "C:\Users\Lukas\Desktop\github\Fileserve_Observer\src\services\config_service\repository\config_repository.py", line 97, in get_destinations
+    with self._session as session:
+AttributeError: 'ConfigRepository' object has no attribute '_session'

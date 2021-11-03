@@ -10,7 +10,6 @@ import os
 
 path = os.getcwd()
 logpath = os.path.join(path, 'ftp.log')
-
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
@@ -25,7 +24,11 @@ class ConfigRepository:
     def __init__(self):
         try:
             path = os.getcwd()
-            db = os.path.join(path, 'db/ftpdb.db')
+            if os.path.isdir(os.path.join(path,'db')):
+                db = os.path.join(path, 'db/ftpdb.db')
+            else:
+                db = os.path.join(path, '../db/ftpdb.db')
+
             _engine = create_engine('sqlite:///' + db)
             Base.metadata.create_all(bind=_engine)
             self._session = Session(_engine)
