@@ -18,14 +18,16 @@ class Event(FileSystemEventHandler):
         directory = config_service.loadQuery(path)
         destination = config_service.loadQuery(directory.destination)
 
-        if destination.protocol == 'ftp':
-            Upload.to_ftp(destination.ip,destination.username,destination.password, path)
+        
+        match destination.protocol:
+            case 'ftp':
+                Upload.to_ftp(destination.ip,destination.username,destination.password, path, directory.serverdir)
 
-        elif destination.protocol == 'sftp':
-            Upload.to_sftp(destination.ip,destination.username,destination.password, path)
+            case 'sftp':
+                Upload.to_sftp(destination.ip,destination.username,destination.password, path, directory.serverdir)
 
-        elif destination.protocol == 'otc':
-            Upload.to_otc(destination.ip,destination.username,destination.password, path)
+            case 'otc':
+                Upload.to_otc(destination.ip,destination.username,destination.password, path, directory.serverdir)
 
 
 class MonitorService:

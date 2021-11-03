@@ -211,3 +211,9 @@ Traceback (most recent call last):
     baum()
 NameError: name 'baum' is not defined
 2021-10-19 12:36:16,714:services.upload_functions:Uploaded C:/Users/DE1119189/Desktop/Github/Fileserve_Observer/test/hallo.txt to demo1.test.targos
+2021-11-03 12:45:48,838:services.config_service.repository.config_repository:Saved data to Database
+2021-11-03 15:29:18,291:services.config_service.repository.config_repository:Saved data to Database
+2021-11-03 15:30:07,242:services.config_service.repository.config_repository:Saved data to Database
+2021-11-03 15:51:44,063:services.config_service.repository.config_repository:Saved data to Database
+2021-11-03 15:52:46,755:services.upload_functions:Uploaded C:/Users/DE1119189/Desktop/Github/Fileserve_Observer/test2/testar.txt to 172.16.0.60
+2021-11-03 15:54:47,265:services.upload_functions:Uploaded C:/Users/DE1119189/Desktop/Github/Fileserve_Observer/test/testur.txt to demo1.test.targos

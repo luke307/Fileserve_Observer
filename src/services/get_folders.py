@@ -14,8 +14,7 @@ class get_folders:
     def to_sftp(ip: str, user: str, password: str) -> list:
 
         with Connection(ip, username=user, password=password) as sftp:
-            with sftp.cd('trainee'):
-                return [f.filename for f in sftp.listdir_attr(".")]
+            return sftp.listdir()
 
 
     def to_otc(bucket: str, access_key: str, secret_access_key: str) -> list:

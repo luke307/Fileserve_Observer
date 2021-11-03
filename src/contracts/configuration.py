@@ -10,6 +10,7 @@ class Dataset:
 class Directory(Dataset):
     dirpath: str = ''
     destination: str = ''
+    serverdir: str = ''
 
 
 @dataclass

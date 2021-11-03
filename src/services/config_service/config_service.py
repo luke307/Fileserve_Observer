@@ -22,7 +22,10 @@ class ConfigService:
         destinations = []
 
         for i in range(len(db_directories)):
-            directory = Directory(db_directories[i].dirpath, db_directories[i].destination)
+            directory = Directory(
+                            db_directories[i].dirpath,
+                            db_directories[i].destination,
+                            db_directories[i].serverdir)
             directories.append(directory)
 
         for i in range(len(db_destinations)):
@@ -45,9 +48,12 @@ class ConfigService:
 
         if '/' in for_query:
             output = self.config_repository.get_directories(for_query)
-            to_load = Directory(output.dirpath, output.destination)
+            to_load = Directory(
+                            output.dirpath,
+                            output.destination,
+                            output. serverdir)
 
-        elif '.' in for_query:
+        else:
             output = self.config_repository.get_destinations(for_query)
             to_load = Destination(
                             output.ip, 
@@ -61,7 +67,10 @@ class ConfigService:
     def save(self, config: Dataset) -> bool:
     
         if 'Directory' in str(type(config)):
-            to_save = DB_Directory(config.dirpath, config.destination)
+            to_save = DB_Directory(
+                            config.dirpath,
+                            config.destination,
+                            config.serverdir)
 
         elif 'Destination' in str(type(config)):
             to_save = DB_Destination(config.ip, config.username, config.protocol)

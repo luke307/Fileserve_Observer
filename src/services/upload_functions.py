@@ -21,7 +21,7 @@ logger.addHandler(file_handler)
 
 class Upload:
 
-    def to_ftp(ip: str, user: str, password: str, path: str) -> None:
+    def to_ftp(ip: str, user: str, password: str, path: str, serverdir: str) -> None:
 
         for file in os.listdir(path):
 
@@ -32,7 +32,10 @@ class Upload:
                 try:
                     with FTP(ip) as ftp:
                         ftp.login(user, password)
+                        if serverdir:
+                            ftp.cwd(serverdir)
                         ftp.storbinary(f'STOR {file}', open(filepath,'rb'))
+                        
                 except:
                     logger.exception("Could not upload to FTP-Server")
                 else:
@@ -40,7 +43,7 @@ class Upload:
                     logger.info(f"Uploaded {filepath} to {ip}")
 
 
-    def to_sftp(ip: str, user: str, password: str, path: str) -> None:
+    def to_sftp(ip: str, user: str, password: str, path: str, serverdir: str) -> None:
 
         for file in os.listdir(path):
 
@@ -50,7 +53,10 @@ class Upload:
 
                 try:
                     with Connection(ip, username=user, password=password) as sftp:
-                        with sftp.cd('trainee'):
+                        if serverdir:
+                            with sftp.cd(serverdir):
+                                sftp.put(filepath)
+                        else:
                             sftp.put(filepath)
 
                 except:
@@ -60,7 +66,7 @@ class Upload:
                     logger.info(f"Uploaded {filepath} to {ip}")
 
 
-    def to_otc(bucket: str, access_key: str, secret_access_key: str, path: str) -> None:
+    def to_otc(bucket: str, access_key: str, secret_access_key: str, path: str, serverdir: str) -> None:
 
         client = boto3.client('s3',
                             aws_access_key_id= access_key,
@@ -75,7 +81,10 @@ class Upload:
 
                 try:
                     upload_file_bucket = bucket
-                    upload_file_key = 'LG_SDK_TEST/' + file
+                    if serverdir:
+                        upload_file_key = serverdir + file
+                    else:
+                        upload_file_key =  file
                     client.upload_file(filepath, upload_file_bucket, upload_file_key)
                 except:
                     logger.exception("Could not upload to OTC")

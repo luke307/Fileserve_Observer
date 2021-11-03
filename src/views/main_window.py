@@ -77,7 +77,8 @@ class MainWindow(QWidget):
     def load_config(self) -> None:
         self.config = self.config_service.loadAll()
 
-    def create_combobox(self):
+
+    def create_combobox(self) -> None:
         try:
             self.comboBox.clear()
         except AttributeError:
@@ -134,20 +135,20 @@ class MainWindow(QWidget):
     def _create_context_menu(self) -> None:
         position = QCursor.pos()
         context_menu = QMenu(self)
-        action_edit = context_menu.addAction('Edit')
+        # action_edit = context_menu.addAction('Edit')
         action_delete = context_menu.addAction('Delete')
 
         action = context_menu.exec_(position)
-        if action == action_edit:
-            click_position = self.table.mapFromGlobal(position)
-            item = self.table.itemAt(click_position)
-            row = self.table.currentRow()
-            if item != None and row > -1:
-                self._edit_menu = DirectoryWindow(self.config['destinations'], item.text())
-                self._edit_menu.show()
-                self.table.setParent(None)
-                self.table = self.create_table()
-                self.layout.addWidget(self.table)
+        # if action == action_edit:
+        #     click_position = self.table.mapFromGlobal(position)
+        #     item = self.table.itemAt(click_position)
+        #     row = self.table.currentRow()
+        #     if item != None and row > -1:
+        #         self._edit_menu = DirectoryWindow(self.config['destinations'], item.text())
+        #         self._edit_menu.show()
+        #         self.table.setParent(None)
+        #         self.table = self.create_table()
+        #         self.layout.addWidget(self.table)
 
         if action == action_delete:
             click_position = self.table.mapFromGlobal(position)

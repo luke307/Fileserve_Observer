@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['src\\ftp_service.py'],
-             pathex=['C:\\Users\\Lukas\\Desktop\\ftp'],
+             pathex=[],
              binaries=[],
              datas=[],
              hiddenimports=[],

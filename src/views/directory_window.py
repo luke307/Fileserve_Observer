@@ -5,6 +5,7 @@ import ntpath
 
 from views.destination_window import DestinationWindow
 from services.config_service.config_service import ConfigService
+from services.get_folders import get_folders
 from contracts.configuration import Directory, Destination
 
 
@@ -30,13 +31,19 @@ class DirectoryWindow(QWidget):
 
         super().__init__()
 
+
         self.config_service = ConfigService()
         self.destination = destination
+        self.directory = directory
 
 
         self._new_menu = DestinationWindow(False)
         self._edit_menu = DestinationWindow(True)
 
+        self.init_ui()
+
+
+    def init_ui(self):
 
         path_to_directory_label = QLabel('Directory')
         self.path_to_directory_input = QLineEdit()
@@ -51,45 +58,55 @@ class DirectoryWindow(QWidget):
         save_button.clicked.connect(self._on_save_clicked)
 
 
-        self.comboBox1 = QComboBox(self)
-        for i in range(len(destination)):
-            self.comboBox1.addItem(destination[i].ip)
+        self.comboBox_Des = QComboBox(self)
+        for i in range(len(self.destination)):
+            self.comboBox_Des.addItem(self.destination[i].ip)
+
+        self.comboBox_Des.currentTextChanged.connect(self._modify_combobox)
 
         #box_label = QLabel('Directory:')
-        self.comboBox2 = QComboBox(self)
-        self.comboBox2.addItem('None')
-
-        self.comboBox1.setEditable(True)
-        line_edit = self.comboBox1.lineEdit()
-        line_edit.setAlignment(Qt.AlignCenter)
+        self.comboBox_Dir = QComboBox(self)
+        self._modify_combobox()
 
         layout = QVBoxLayout()
 
         layout.addWidget(path_to_directory_label)
         layout.addWidget(self.path_to_directory_input)
         layout.addWidget(browse_button)
-        layout.addWidget(self.comboBox1)
-        layout.addWidget(self.comboBox2)
+        layout.addWidget(self.comboBox_Des)
+        layout.addWidget(self.comboBox_Dir)
         layout.addWidget(new_button)
         layout.addWidget(save_button)
 
 
-        if directory:
+        if self.directory:
             delete_button = QPushButton('Delete')
             delete_button.clicked.connect(self._on_delete_clicked)
             layout.addWidget(delete_button)
-            self.path_to_directory_input.setText(directory)
+            self.path_to_directory_input.setText(self.directory)
 
         self.setLayout(layout)
 
-    def create_combobox(self):
-        try:
-            self.comboBox.clear()
-        except AttributeError:
-            pass
-        self.comboBox = QComboBox(self)
-        for i in range(len(self.destination)):
-            self.comboBox.addItem(self.destination[i].ip)
+    @pyqtSlot()
+    def _modify_combobox(self):
+
+        self.comboBox_Dir.clear()
+        self.comboBox_Dir.addItem('None')
+
+        destination = self.config_service.loadQuery(self.comboBox_Des.currentText())
+
+        match destination.protocol:
+            case 'ftp':
+                dir_list = get_folders.to_ftp(destination.ip,destination.username,destination.password)
+            case 'sftp':
+                dir_list = get_folders.to_sftp(destination.ip,destination.username,destination.password)
+            case 'otc':
+                dir_list = get_folders.to_otc(destination.ip,destination.username,destination.password)
+
+
+        for i in range(len(dir_list)):
+            self.comboBox_Dir.addItem(dir_list[i])
+
 
     @pyqtSlot()
     def _on_browse_clicked(self) -> None:
@@ -109,7 +126,10 @@ class DirectoryWindow(QWidget):
     @pyqtSlot()
     def _on_save_clicked(self) -> None:
 
-        newDir = Directory(self.path_to_directory_input.text(), self.comboBox.currentText())
+        newDir = Directory(
+                    self.path_to_directory_input.text(),
+                    self.comboBox_Des.currentText(),
+                    self.comboBox_Dir.currentText())
 
         logger.debug(f'SAVE: path to directory:{newDir.dirpath}')
         logger.debug(f'SAVE: destination:{newDir.destination}')
