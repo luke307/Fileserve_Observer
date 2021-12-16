@@ -2,3 +2,5 @@ sqldiff.exe
 sqlite3.exe
 sqlite3_analyzer.exe
 test4.py
+env/
+__pycache__
