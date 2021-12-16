@@ -1,1 +1,7 @@
-pyqt5 == 5.15.0
+boto3
+keyring
+pyftpdlib
+pyqt5
+pysftp
+sqlalchemy
+watchdog
