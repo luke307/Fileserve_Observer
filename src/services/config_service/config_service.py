@@ -14,6 +14,8 @@ class ConfigService:
 
 
     def loadAll(self) -> dict:
+        '''loads the tables destination and directories in a dictionary with two lists of objects
+        '''
 
         db_directories = self.config_repository.get_directories()
         db_destinations = self.config_repository.get_destinations()
@@ -45,6 +47,8 @@ class ConfigService:
 
 
     def loadQuery(self, for_query: str) -> Dataset:
+        '''the function assumes that everything that has a slash in it is a file path 
+        and everything which does not have a slash is a destination'''
 
         if '/' in for_query:
             output = self.config_repository.get_directories(for_query)
@@ -65,6 +69,9 @@ class ConfigService:
 
 
     def save(self, config: Dataset) -> bool:
+        '''in case of a new directory it just does an update in the directories table,
+        in case of a new destination it saves the password via keyring
+        if the protocol is sftp it gets a public key and saves the key localy'''
     
         if 'Directory' in str(type(config)):
             to_save = DB_Directory(
@@ -91,11 +98,13 @@ class ConfigService:
 
 
     def delete(self, to_delete: Dataset) -> bool:
+        '''the function assumes that everything that has a slash in it is a file path 
+        and everything which does not have a slash is a destination'''
 
         if '/' in to_delete:
             dataset_to_load = self.config_repository.get_directories(to_delete)
 
-        elif '.' in to_delete:
+        else:
             dataset_to_load = self.config_repository.get_destinations(to_delete)
 
         is_deleted = self.config_repository.delete(dataset_to_load)

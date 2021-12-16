@@ -75,10 +75,14 @@ class MainWindow(QWidget):
 
 
     def load_config(self) -> None:
+        '''loads the tables destination and directories in a dictionary with two lists of objects
+        '''
         self.config = self.config_service.loadAll()
 
 
     def create_combobox(self) -> None:
+        '''Creates a dropdown menu for all the directories
+        not needed anymore due to the table function'''
         try:
             self.comboBox.clear()
         except AttributeError:
@@ -89,6 +93,8 @@ class MainWindow(QWidget):
 
 
     def create_table(self) -> QTableWidget:
+        '''Creates a table and fills it with the pathnames from the directory tabble
+        '''
         self.load_config()
         table = QTableWidget()
         table.setRowCount(len(self.config['directories']))
@@ -108,6 +114,8 @@ class MainWindow(QWidget):
 
     @pyqtSlot()
     def _on_new_clicked(self) -> None:
+        '''opens the directory window with the destinations table as input
+        '''
         self.load_config()
         self._new_menu = DirectoryWindow(self.config['destinations'])
         self._new_menu.show()
@@ -115,6 +123,8 @@ class MainWindow(QWidget):
 
     @pyqtSlot()
     def _on_refresh_clicked(self) -> None:
+        '''updates the table by recreating it
+        '''
         self.table.setParent(None)
         self.table = self.create_table()
         self.layout.addWidget(self.table)
@@ -122,17 +132,24 @@ class MainWindow(QWidget):
 
     @pyqtSlot()
     def _on_activate_clicked(self) -> None:
+        '''starts the monitoring service
+        '''
         process_service = ProcessService()
         process_service.start()
 
 
     @pyqtSlot()
     def _on_kill_clicked(self) -> None:
+        '''closes the monitoring service
+        '''
         process_service = ProcessService()
         process_service.kill()
 
     @pyqtSlot()
     def _create_context_menu(self) -> None:
+        '''Creates a menu when you right click on objects in the table
+        it gives you the option to delete the item'''
+
         position = QCursor.pos()
         context_menu = QMenu(self)
         # action_edit = context_menu.addAction('Edit')
