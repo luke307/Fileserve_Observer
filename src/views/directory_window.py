@@ -62,11 +62,11 @@ class DirectoryWindow(QWidget):
         for i in range(len(self.destination)):
             self.comboBox_Des.addItem(self.destination[i].ip)
 
-        self.comboBox_Des.currentTextChanged.connect(self._modify_combobox)
+        self.comboBox_Des.currentTextChanged.connect(self._modify_combobox_dir)
 
         #box_label = QLabel('Directory:')
         self.comboBox_Dir = QComboBox(self)
-        self._modify_combobox()
+        self._modify_combobox_dir()
 
         layout = QVBoxLayout()
 
@@ -88,7 +88,11 @@ class DirectoryWindow(QWidget):
         self.setLayout(layout)
 
     @pyqtSlot()
-    def _modify_combobox(self):
+    def _modify_combobox_dir(self):
+        '''emptys the combobox_Dir
+        gets a row from the destiantion table as an object by using the loadquery function of the config_service module
+        use pattern macthing to get the correct function for the destination to get all of it's subdirectories
+        add the subdirectories to the combobox'''
 
         self.comboBox_Dir.clear()
         self.comboBox_Dir.addItem('None')
@@ -110,6 +114,9 @@ class DirectoryWindow(QWidget):
 
     @pyqtSlot()
     def _on_browse_clicked(self) -> None:
+        '''opens the file dialog
+        when a file is selected it add the filepath to a textbox'''
+
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         folder  = QFileDialog.getExistingDirectory(self, 'Select a directory')
@@ -119,12 +126,19 @@ class DirectoryWindow(QWidget):
 
     @pyqtSlot()
     def _on_new_clicked(self) -> None:
+        '''closes the directory window
+        opens the destination window'''
+
         self.close()
         self._new_menu.show()
 
 
     @pyqtSlot()
     def _on_save_clicked(self) -> None:
+        '''creates an object of the directory class
+        gice the object to the save function of the config_service module
+        displays a message wether it saved successfully
+        closes the window if successfull'''
 
         newDir = Directory(
                     self.path_to_directory_input.text(),
@@ -147,7 +161,11 @@ class DirectoryWindow(QWidget):
 
     @pyqtSlot()
     def _on_delete_clicked(self) -> None:
-
+        '''creates an object of the directory class
+        gice the object to the delete function of the config_service module
+        displays a message wether it deleted successfully
+        closes the window if successfull'''
+    
         oldDir = Directory(self.path_to_directory_input.text(), self.comboBox.currentText())
 
         logger.debug(f'DELETE: path to directory:{oldDir.dirpath}')
